@@ -12,6 +12,6 @@ class PriceTools extends Model
 
     static function RandomPrice($from, $to, $asString = false){
         $randomPrice = PriceTools::SatoshiToBTC(rand($from, $to));
-        return $asString ? (string) $randomPrice : $randomPrice;
+        return $asString ? number_format($randomPrice, 8) : $randomPrice;
     }
 }
