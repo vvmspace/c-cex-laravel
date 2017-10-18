@@ -10,7 +10,8 @@ class PriceTools extends Model
         return $satoshi * 0.00000001;
     }
 
-    static function RandomPrice($from, $to){
-        return PriceTools::SatoshiToBTC(rand($from, $to));
+    static function RandomPrice($from, $to, $asString = false){
+        $randomPrice = PriceTools::SatoshiToBTC(rand($from, $to));
+        return $asString ? (string) $randomPrice : $randomPrice;
     }
 }
