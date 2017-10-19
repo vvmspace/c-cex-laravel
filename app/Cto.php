@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cto extends Model
 {
-    protected $api;
-    protected $buy_from;
-    protected $buy_to;
-    protected $sell_from;
-    protected $sell_to;
+    public $api;
+    public $buy_from;
+    public $buy_to;
+    public $sell_from;
+    public $sell_to;
+    public $pair = 'cto-btc';
 
 
     function __construct(array $attributes = [])
@@ -96,7 +97,7 @@ class Cto extends Model
 
     static function GetOrders(){
         $cto = new Cto();
-        $orders = $cto->api->getOrders('cto-btc', true);
+        $orders = $cto->api->getOrders($cto->pair, true);
         return $orders;
     }
 }
