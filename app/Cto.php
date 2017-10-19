@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cto extends Model
 {
+    /**
+     * @var $api Api
+     */
     public $api;
     public $buy_from;
     public $buy_to;
@@ -101,5 +104,11 @@ class Cto extends Model
         if ($R['return']){
             return $R['return'];
         }
+    }
+
+    static function CancelRandomOrder(){
+        $ordersIDs = array_keys(Cto::GetOrders());
+        $cto = new Cto();
+        $cto->api->cancelOrder(VVMHelper::GetRandomArrayValue($ordersIDs));
     }
 }
