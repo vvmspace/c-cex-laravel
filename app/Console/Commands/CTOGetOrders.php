@@ -6,14 +6,14 @@ use App\Api;
 use App\Cto;
 use Illuminate\Console\Command;
 
-class CCexGetOrders extends Command
+class CTOGetOrders extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'c-cex:orders';
+    protected $signature = 'cto:orders';
 
     /**
      * The console command description.
