@@ -44,8 +44,7 @@ class Cto extends Model
     }
 
     static function GetOrdersInfo(){
-        $cto = new Cto();
-        $orders = $cto->api->getOrders('cto-btc', true);
+        $orders = Cto::GetOrders();
         $sellCount = 0;
         $buyCount = 0;
         $buyTotalAmount = 0;
@@ -93,5 +92,11 @@ class Cto extends Model
             $R = "Not successful request";
         }
         return $R;
+    }
+
+    static function GetOrders(){
+        $cto = new Cto();
+        $orders = $cto->api->getOrders('cto-btc', true);
+        return $orders;
     }
 }
