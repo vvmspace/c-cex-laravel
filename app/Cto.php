@@ -54,8 +54,8 @@ class Cto extends Model
         $sellPriceSumm = 0;
         $CTOInOrders = 0;
         $BTCInOrders = 0;
-        if($orders['return']) {
-            foreach ($orders['return'] as $orderID => $order) {
+        if($orders) {
+            foreach ($orders as $orderID => $order) {
                 switch ($order['type']) {
                     case 'sell':
                         $sellCount++;
@@ -97,7 +97,9 @@ class Cto extends Model
 
     static function GetOrders(){
         $cto = new Cto();
-        $orders = $cto->api->getOrders($cto->pair, true);
-        return $orders;
+        $R = $cto->api->getOrders($cto->pair, true);
+        if ($R['return']){
+            return $R['return'];
+        }
     }
 }
