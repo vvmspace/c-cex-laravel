@@ -43,4 +43,55 @@ class Cto extends Model
         $cto->api->makeOrder('buy', 'cto-btc', 100 , Cto::RandomBuyPrice());
     }
 
+    static function GetOrdersInfo(){
+        $cto = new Cto();
+        $orders = $cto->api->getOrders('cto-btc', true);
+        $sellCount = 0;
+        $buyCount = 0;
+        $buyTotalAmount = 0;
+        $sellTotalAmount = 0;
+        $buyPriceSumm = 0;
+        $sellPriceSumm = 0;
+        $CTOInOrders = 0;
+        $BTCInOrders = 0;
+        if($orders['return']) {
+            foreach ($orders['return'] as $orderID => $order) {
+                switch ($order['type']) {
+                    case 'sell':
+                        $sellCount++;
+                        $sellTotalAmount += $order['amount'];
+                        $sellPriceSumm += $order['price'];
+                        $CTOInOrders += $order['amount'];
+                        break;
+                    case 'buy':
+                        $buyCount++;
+                        $buyTotalAmount += $order['amount'];
+                        $buyPriceSumm += $order['price'];
+                        $BTCInOrders += $order['amount'] * $order['price'];
+                        break;
+                }
+            }
+            if ($buyCount > 0) {
+                $buyAvgPrice = $buyPriceSumm / $buyCount;
+            } else {
+                $buyAvgPrice = 0;
+            }
+            if ($sellCount > 0) {
+                $sellAvgPrice = $sellPriceSumm / $sellCount;
+            } else {
+                $sellAvgPrice = 0;
+            }
+            $sellAvgPriceF = number_format($sellAvgPrice, 8);
+            $buyAvgPriceF = number_format($buyAvgPrice, 8);
+            $R = "Sell count: $sellCount\r\n";
+            $R .= "Buy count: $buyCount\r\n";
+            $R .= "Buy average price: $buyAvgPriceF \r\n";
+            $R .= "Sell average price: $sellAvgPriceF \r\n";
+            $R .= "CTO in orders: $CTOInOrders \r\n";
+            $R .= "BTC in orders: $BTCInOrders \r\n";
+        }else{
+            $R = "Not successful request";
+        }
+        return $R;
+    }
 }
