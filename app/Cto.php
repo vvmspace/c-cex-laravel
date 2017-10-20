@@ -57,7 +57,9 @@ class Cto extends Model
     }
 
     static function BuyMicro(){
-        Cto::Buy100();
+	$cto = new Cto;
+        $cto->api->makeOrder('buy', 'cto-btc', 200 , Cto::RandomBuyPrice());
+//        Cto::Buy100();
     }
 
     static function SellMicro(){
