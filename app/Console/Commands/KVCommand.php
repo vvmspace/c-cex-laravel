@@ -12,7 +12,7 @@ class KVCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'k:v {getset} {key} {valuedefault}';
+    protected $signature = 'k:v {getset} {key} {value?}';
 
     /**
      * The console command description.
@@ -49,7 +49,7 @@ class KVCommand extends Command
                     echo "$v\r\n";
                     break;
                 case 'set':
-                    KV::set($this->argument('key'), $this->argument('valuedefault'));
+                    KV::set($this->argument('key'), $this->argument('value'));
                     break;
             }
         }

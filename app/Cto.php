@@ -38,14 +38,30 @@ class Cto extends Model
         return PriceTools::RandomBuyPrice($cto->buy_from, $cto->buy_to, true);
     }
 
+    /**
+    * @deprecated
+    */
+
     static function Sell100(){
         $cto = new Cto();
         $cto->api->makeOrder('sell', 'cto-btc', 100 , Cto::RandomSellPrice());
     }
 
+    /**
+    * @deprecated
+    */
+
     static function Buy100(){
         $cto = new Cto();
         $cto->api->makeOrder('buy', 'cto-btc', 100 , Cto::RandomBuyPrice());
+    }
+
+    static function BuyMicro(){
+        Cto::Buy100();
+    }
+
+    static function SellMicro(){
+        Cto::Sell100();
     }
 
     static function GetOrdersInfo(){
