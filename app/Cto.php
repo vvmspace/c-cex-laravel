@@ -15,6 +15,7 @@ class Cto extends Model
     public $sell_from;
     public $sell_to;
     public $pair = 'cto-btc';
+    public $cache_delay = 1;
 
 
     function __construct(array $attributes = [])
@@ -29,12 +30,12 @@ class Cto extends Model
 
     static function RandomSellPrice(){
         $cto = new Cto();
-        return PriceTools::RandomPrice($cto->sell_from, $cto->sell_to, true);
+        return PriceTools::RandomSellPrice($cto->sell_from, $cto->sell_to, true);
     }
 
     static function RandomBuyPrice(){
         $cto = new Cto();
-        return PriceTools::RandomPrice($cto->buy_from, $cto->buy_to, true);
+        return PriceTools::RandomBuyPrice($cto->buy_from, $cto->buy_to, true);
     }
 
     static function Sell100(){
@@ -92,6 +93,10 @@ class Cto extends Model
             $R .= "Sell average price: $sellAvgPriceF \r\n";
             $R .= "CTO in orders: $CTOInOrders \r\n";
             $R .= "BTC in orders: $BTCInOrders \r\n";
+            KV::set('cto_sell_count', $sellCount);
+            KV::set('cto_buy_count', $sellCount);
+            KV::set('cto_in_orders', $CTOInOrders);
+            KV::set('btc_in_orders', $BTCInOrders);
         }else{
             $R = "Not successful request";
         }
@@ -107,8 +112,26 @@ class Cto extends Model
     }
 
     static function CancelRandomOrder(){
-        $ordersIDs = array_keys(Cto::GetOrders());
+        $orders = Cto::GetOrders();
+        if($orders) {
+            $ordersIDs = array_keys(Cto::GetOrders());
+            $cto = new Cto();
+            $cto->api->cancelOrder(VVMHelper::GetRandomArrayValue($ordersIDs));
+        }else{
+            echo 'Error in order response';
+        }
+    }
+
+    static function CacheTicker(){
         $cto = new Cto();
-        $cto->api->cancelOrder(VVMHelper::GetRandomArrayValue($ordersIDs));
+        $lastUpdate = KV::get('cto_last_update');
+        if(time() - $lastUpdate > $cto->cache_delay*60){
+            KV::set('cto_last_update', time());
+            Cto::UpdateCache();
+        }
+    }
+
+    static function UpdateCache(){
+        echo "updating cache\r\n";
     }
 }
