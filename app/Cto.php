@@ -111,10 +111,10 @@ class Cto extends Model
             $R .= "Sell average price: $sellAvgPriceF \r\n";
             $R .= "CTO in orders: $CTOInOrders \r\n";
             $R .= "BTC in orders: $BTCInOrders \r\n";
-            KV::set('cto_sell_count', $sellCount);
-            KV::set('cto_buy_count', $sellCount);
-            KV::set('cto_in_orders', $CTOInOrders);
-            KV::set('btc_in_orders', $BTCInOrders);
+            // KV::set('cto_sell_count', $sellCount);
+            // KV::set('cto_buy_count', $sellCount);
+            // KV::set('cto_in_orders', $CTOInOrders);
+            // KV::set('btc_in_orders', $BTCInOrders);
         }else{
             $R = "Not successful request";
         }
