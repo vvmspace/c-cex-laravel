@@ -45,14 +45,14 @@ class Dazz extends AbstractPair
     static function BuyMicro(){
 	   $dazz = new Dazz;
        $price = Dazz::RandomBuyPrice();
-       $size = 0.0001;
+       $size = 0.00011;
        $result = $dazz->api->makeOrder('buy', 'dazz-btc', $size/$price , $price);
     }
 
     static function SellMicro(){
        $dazz = new Dazz();
        $price = Dazz::RandomSellPrice();
-       $size = 0.0001;
+       $size = 0.00011;
        $amount = $size / $price;
        echo "$amount";
        $result = $dazz->api->makeOrder('sell', 'dazz-btc', $size / $price , $price);
