@@ -52,7 +52,8 @@ class Cto extends Model
     static function SellMicro(){
        $cto = new Cto();
        $price = Cto::RandomSellPrice();
-       $cto->api->makeOrder('sell', 'cto-btc', 0.002 / $price , $price);
+       $size = 0.005;
+       $cto->api->makeOrder('sell', 'cto-btc', $size / $price , $price);
     }
 
     static function GetOrdersInfo(){
