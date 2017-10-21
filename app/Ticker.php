@@ -15,13 +15,12 @@ class Ticker extends Model
         sleep(10);
         Cto::BuyMicro();
         sleep(10);
-        Cto::CancelRandomOrder();
+        Dazz::CancelRandomOrder();
         sleep(10);
-        Cto::SellMicro();
+        Dazz::SellMicro();
         sleep(10);
-        Cto::BuyMicro();
+        Dazz::BuyMicro();
         sleep(10);
-        Cto::CancelRandomOrder();
         // Cto::CacheTicker();
     }
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cto extends AbstractPair
+class Dazz extends AbstractPair
 {
     /**
      * @var $api Api
@@ -14,7 +14,7 @@ class Cto extends AbstractPair
     public $buy_to;
     public $sell_from;
     public $sell_to;
-    public $pair = 'cto-btc';
+    public $pair = 'dazz-btc';
     public $cache_delay = 1;
 
 
@@ -22,49 +22,51 @@ class Cto extends AbstractPair
     {
         parent::__construct($attributes);
         $this->api = new Api();
-        $this->buy_from = env('CTO_BUY_FROM');
-        $this->sell_from = env('CTO_SELL_FROM');
-        $this->buy_to = env('CTO_BUY_TO');
-        $this->sell_to = env('CTO_SELL_TO');
+        $this->buy_from = env('DAZZ_BUY_FROM');
+        $this->sell_from = env('DAZZ_SELL_FROM');
+        $this->buy_to = env('DAZZ_BUY_TO');
+        $this->sell_to = env('DAZZ_SELL_TO');
     }
 
     static function RandomSellPrice(){
-        $cto = new Cto();
-        $price = PriceTools::RandomSellPrice($cto->sell_from, $cto->sell_to, true);
-        echo "Random {$cto->pair} sell price: $price\r\n";
+        $dazz = new Dazz();
+        $price = PriceTools::RandomPrice($dazz->sell_from, $dazz->sell_to, true);
+        echo "Random {$dazz->pair} sell price: $price\r\n";
         return $price;
     }
 
     static function RandomBuyPrice(){
-        $cto = new Cto();
-        $price = PriceTools::RandomBuyPrice($cto->buy_from, $cto->buy_to, true);
-        echo "Random {$cto->pair} buy price: $price\r\n";
+        $dazz = new Dazz();
+        $price = PriceTools::RandomBuyPrice($dazz->buy_from, $dazz->buy_to, true);
+        echo "Random {$dazz->pair} buy price: $price\r\n";
         return $price;
     }
 
     static function BuyMicro(){
-	   $cto = new Cto;
-       $price = Cto::RandomBuyPrice();
+	   $dazz = new Dazz;
+       $price = Dazz::RandomBuyPrice();
        $size = 0.0001;
-       $cto->api->makeOrder('buy', 'cto-btc', $size/$price , $price);
+       $result = $dazz->api->makeOrder('buy', 'dazz-btc', $size/$price , $price);
     }
 
     static function SellMicro(){
-       $cto = new Cto();
-       $price = Cto::RandomSellPrice();
-       $size = 0.002;
-       $cto->api->makeOrder('sell', 'cto-btc', $size / $price , $price);
+       $dazz = new Dazz();
+       $price = Dazz::RandomSellPrice();
+       $size = 0.0001;
+       $amount = $size / $price;
+       echo "$amount";
+       $result = $dazz->api->makeOrder('sell', 'dazz-btc', $size / $price , $price);
     }
 
     static function GetOrdersInfo(){
-        $orders = Cto::GetOrders();
+        $orders = Dazz::GetOrders();
         $sellCount = 0;
         $buyCount = 0;
         $buyTotalAmount = 0;
         $sellTotalAmount = 0;
         $buyPriceSumm = 0;
         $sellPriceSumm = 0;
-        $CTOInOrders = 0;
+        $DAZZInOrders = 0;
         $BTCInOrders = 0;
         if($orders) {
             foreach ($orders as $orderID => $order) {
@@ -73,7 +75,7 @@ class Cto extends AbstractPair
                         $sellCount++;
                         $sellTotalAmount += $order['amount'];
                         $sellPriceSumm += $order['price'];
-                        $CTOInOrders += $order['amount'];
+                        $DAZZInOrders += $order['amount'];
                         break;
                     case 'buy':
                         $buyCount++;
@@ -99,11 +101,11 @@ class Cto extends AbstractPair
             $R .= "Buy count: $buyCount\r\n";
             $R .= "Buy average price: $buyAvgPriceF \r\n";
             $R .= "Sell average price: $sellAvgPriceF \r\n";
-            $R .= "CTO in orders: $CTOInOrders \r\n";
+            $R .= "DAZZ in orders: $DAZZInOrders \r\n";
             $R .= "BTC in orders: $BTCInOrders \r\n";
-            // KV::set('cto_sell_count', $sellCount);
-            // KV::set('cto_buy_count', $sellCount);
-            // KV::set('cto_in_orders', $CTOInOrders);
+            // KV::set('dazz_sell_count', $sellCount);
+            // KV::set('dazz_buy_count', $sellCount);
+            // KV::set('dazz_in_orders', $DAZZInOrders);
             // KV::set('btc_in_orders', $BTCInOrders);
         }else{
             $R = "Not successful request";
@@ -112,30 +114,30 @@ class Cto extends AbstractPair
     }
 
     static function GetOrders(){
-        $cto = new Cto();
-        $R = $cto->api->getOrders($cto->pair, true);
+        $dazz = new Dazz();
+        $R = $dazz->api->getOrders($dazz->pair, true);
         if ($R['return']){
             return $R['return'];
         }
     }
 
     static function CancelRandomOrder(){
-        $orders = Cto::GetOrders();
+        $orders = Dazz::GetOrders();
         if($orders) {
             $ordersIDs = array_keys($orders);
-            $cto = new Cto();
-            $cto->api->cancelOrder(VVMHelper::GetRandomArrayValue($ordersIDs));
+            $dazz = new Dazz();
+            $dazz->api->cancelOrder(VVMHelper::GetRandomArrayValue($ordersIDs));
         }else{
             echo 'Error in order response';
         }
     }
 
     static function CacheTicker(){
-        $cto = new Cto();
-        $lastUpdate = KV::get('cto_last_update');
-        if(time() - $lastUpdate > $cto->cache_delay*60){
-            KV::set('cto_last_update', time());
-            Cto::UpdateCache();
+        $dazz = new Dazz();
+        $lastUpdate = KV::get('dazz_last_update');
+        if(time() - $lastUpdate > $dazz->cache_delay*60){
+            KV::set('dazz_last_update', time());
+            Dazz::UpdateCache();
         }
     }
 
