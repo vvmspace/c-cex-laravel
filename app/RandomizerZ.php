@@ -14,7 +14,7 @@ class RandomizerZ extends Model
             $min = $b;
             $max = $a;
         }
-        return rand(rand($min, $max), $max);
+        return rand($min, rand($min,$max));
     }
 
     static function HighRandom($a, $b){
@@ -25,7 +25,7 @@ class RandomizerZ extends Model
             $min = $b;
             $max = $a;
         }
-        return rand($min, rand($min, $max));
+        return rand(rand($min, $max), $max);
     }
 
 }
