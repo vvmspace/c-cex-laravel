@@ -42,32 +42,18 @@ class Cto extends Model
         return $price;
     }
 
-    /**
-    * @deprecated
-    */
-
-    static function Sell100(){
-        $cto = new Cto();
-        $cto->api->makeOrder('sell', 'cto-btc', 100 , Cto::RandomSellPrice());
-    }
-
-    /**
-    * @deprecated
-    */
-
-    static function Buy100(){
-        $cto = new Cto();
-        $cto->api->makeOrder('buy', 'cto-btc', 100 , Cto::RandomBuyPrice());
-    }
-
     static function BuyMicro(){
-	$cto = new Cto;
-        $cto->api->makeOrder('buy', 'cto-btc', 200 , Cto::RandomBuyPrice());
-//        Cto::Buy100();
+	   $cto = new Cto;
+       $price = Cto::RandomBuyPrice();
+       $size = 0.0002;
+       $cto->api->makeOrder('buy', 'cto-btc', $size/$price , $price);
     }
 
     static function SellMicro(){
-        Cto::Sell100();
+       $cto = new Cto();
+       $price = Cto::RandomSellPrice();
+       $cto->api->makeOrder('sell', 'cto-btc', 0.0005 / $price , $price);
+       config(['kv.lastsell' => time()]);
     }
 
     static function GetOrdersInfo(){
