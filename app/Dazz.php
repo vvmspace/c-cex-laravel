@@ -37,7 +37,7 @@ class Dazz extends AbstractPair
 
     static function RandomBuyPrice(){
         $dazz = new Dazz();
-        $price = PriceTools::RandomBuyPrice($dazz->buy_from, $dazz->buy_to, true);
+        $price = PriceTools::RandomPrice($dazz->buy_from, $dazz->buy_to, true);
         echo "Random {$dazz->pair} buy price: $price\r\n";
         return $price;
     }
