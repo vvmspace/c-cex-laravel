@@ -30,12 +30,16 @@ class Cto extends Model
 
     static function RandomSellPrice(){
         $cto = new Cto();
-        return PriceTools::RandomSellPrice($cto->sell_from, $cto->sell_to, true);
+        $price = PriceTools::RandomSellPrice($cto->sell_from, $cto->sell_to, true);
+        echo "Random sell price: $price\r\n";
+        return $price;
     }
 
     static function RandomBuyPrice(){
         $cto = new Cto();
-        return PriceTools::RandomBuyPrice($cto->buy_from, $cto->buy_to, true);
+        $price = PriceTools::RandomBuyPrice($cto->buy_from, $cto->buy_to, true);
+        echo "Random buy price: $price\r\n";
+        return $price;
     }
 
     /**
@@ -132,7 +136,7 @@ class Cto extends Model
     static function CancelRandomOrder(){
         $orders = Cto::GetOrders();
         if($orders) {
-            $ordersIDs = array_keys(Cto::GetOrders());
+            $ordersIDs = array_keys($orders);
             $cto = new Cto();
             $cto->api->cancelOrder(VVMHelper::GetRandomArrayValue($ordersIDs));
         }else{
