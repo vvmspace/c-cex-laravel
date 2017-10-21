@@ -54,7 +54,6 @@ class Dash extends AbstractPair
        $price = Dash::RandomSellPrice();
        $size = 0.00011;
        $amount = $size / $price;
-       echo "$amount";
        $result = $dash->api->makeOrder('sell', 'dash-btc', $size / $price , $price);
     }
 

@@ -7,36 +7,40 @@ use Illuminate\Database\Eloquent\Model;
 class Ticker extends Model
 {
     static function Tick(){
-        // $lastTick =  KV::get('last_tick');
-        // KV::set('last_tick', time());
+        Ticker::MicroTick();
+        Ticker::MicroTick();
+    }
+
+    static function MicroTick(){
+        $t = 8;
         $r = rand(1,4);
         switch ($r) {
             case 1:
                 Dazz::SellMicro();
-                sleep(10);
+                sleep($t);
                 Dazz::BuyMicro();
-                sleep(10);
+                sleep($t);
                 break;
             case 2:
                 Gac::SellMicro();
-                sleep(10);
+                sleep($t);
                 Gac::BuyMicro();
-                sleep(10);
+                sleep($t);
                 break;
             case 3:
                 Dash::SellMicro();
-                sleep(10);
+                sleep($t);
                 Dash::BuyMicro();
-                sleep(10);
+                sleep($t);
                 break;
             case 4:
                 Cto::SellMicro();
-                sleep(10);
+                sleep($t);
                 Cto::BuyMicro();
-                sleep(10);
+                sleep($t);
                 break;
-
         }
-        // Cto::CacheTicker();
+        Cto::CancelRandomOrder();
+        sleep($t);
     }
 }
