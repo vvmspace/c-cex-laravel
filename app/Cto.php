@@ -21,115 +21,113 @@ class Cto extends AbstractPair
     function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->api = new Api();
         $this->buy_from = env('CTO_BUY_FROM');
         $this->sell_from = env('CTO_SELL_FROM');
         $this->buy_to = env('CTO_BUY_TO');
         $this->sell_to = env('CTO_SELL_TO');
     }
 
-    static function RandomSellPrice(){
-        $cto = new Cto();
-        $price = PriceTools::RandomSellPrice($cto->sell_from, $cto->sell_to, true);
-        echo "Random {$cto->pair} sell price: $price\r\n";
-        return $price;
-    }
+//    static function RandomSellPrice(){
+//        $cto = new Cto();
+//        $price = PriceTools::RandomSellPrice($cto->config['sell']['from'], $cto->config['sell']['to'], true);
+//        echo "Random {$cto->pair} sell price: $price\r\n";
+//        return $price;
+//    }
+//
+//    static function RandomBuyPrice(){
+//        $cto = new Cto();
+//        $price = PriceTools::RandomPrice($cto->buy_from, $cto->buy_to, true);
+//        echo "Random {$cto->pair} buy price: $price\r\n";
+//        return $price;
+//    }
 
-    static function RandomBuyPrice(){
-        $cto = new Cto();
-        $price = PriceTools::RandomPrice($cto->buy_from, $cto->buy_to, true);
-        echo "Random {$cto->pair} buy price: $price\r\n";
-        return $price;
-    }
+//    static function BuyMicro(){
+//	   $cto = new Cto;
+//       $price = Cto::RandomBuyPrice();
+//       $size = 0.0002;
+//       $cto->api->makeOrder('buy', 'cto-btc', $size/$price , $price);
+//    }
+//
+//    static function SellMicro(){
+//       $cto = new Cto();
+//       $price = Cto::RandomSellPrice();
+//       $size = 0.0002;
+//       $cto->api->makeOrder('sell', 'cto-btc', $size / $price , $price);
+//    }
+//
+//    static function GetOrdersInfo(){
+//        $orders = Cto::GetOrders();
+//        $sellCount = 0;
+//        $buyCount = 0;
+//        $buyTotalAmount = 0;
+//        $sellTotalAmount = 0;
+//        $buyPriceSumm = 0;
+//        $sellPriceSumm = 0;
+//        $CTOInOrders = 0;
+//        $BTCInOrders = 0;
+//        if($orders) {
+//            foreach ($orders as $orderID => $order) {
+//                switch ($order['type']) {
+//                    case 'sell':
+//                        $sellCount++;
+//                        $sellTotalAmount += $order['amount'];
+//                        $sellPriceSumm += $order['price'];
+//                        $CTOInOrders += $order['amount'];
+//                        break;
+//                    case 'buy':
+//                        $buyCount++;
+//                        $buyTotalAmount += $order['amount'];
+//                        $buyPriceSumm += $order['price'];
+//                        $BTCInOrders += $order['amount'] * $order['price'];
+//                        break;
+//                }
+//            }
+//            if ($buyCount > 0) {
+//                $buyAvgPrice = $buyPriceSumm / $buyCount;
+//            } else {
+//                $buyAvgPrice = 0;
+//            }
+//            if ($sellCount > 0) {
+//                $sellAvgPrice = $sellPriceSumm / $sellCount;
+//            } else {
+//                $sellAvgPrice = 0;
+//            }
+//            $sellAvgPriceF = number_format($sellAvgPrice, 8);
+//            $buyAvgPriceF = number_format($buyAvgPrice, 8);
+//            $R = "Sell count: $sellCount\r\n";
+//            $R .= "Buy count: $buyCount\r\n";
+//            $R .= "Buy average price: $buyAvgPriceF \r\n";
+//            $R .= "Sell average price: $sellAvgPriceF \r\n";
+//            $R .= "CTO in orders: $CTOInOrders \r\n";
+//            $R .= "BTC in orders: $BTCInOrders \r\n";
+//        }else{
+//            $R = "Not successful request";
+//        }
+//        return $R;
+//    }
 
-    static function BuyMicro(){
-	   $cto = new Cto;
-       $price = Cto::RandomBuyPrice();
-       $size = 0.0002;
-       $cto->api->makeOrder('buy', 'cto-btc', $size/$price , $price);
-    }
+//    static function GetOrders(){
+//        $cto = new Cto();
+//        $R = $cto->api->getOrders($cto->pair, true);
+//        if ($R['return']){
+//            return $R['return'];
+//        }
+//    }
 
-    static function SellMicro(){
-       $cto = new Cto();
-       $price = Cto::RandomSellPrice();
-       $size = 0.0002;
-       $cto->api->makeOrder('sell', 'cto-btc', $size / $price , $price);
-    }
+//    static function CancelRandomOrder(){
+//        $orders = Cto::GetOrders();
+//        if($orders) {
+//            $ordersIDs = array_keys($orders);
+//            $cto = new Cto();
+//            $cto->api->cancelOrder(VVMHelper::GetRandomArrayValue($ordersIDs));
+//        }else{
+//            echo 'Error in order response';
+//        }
+//    }
 
-    static function GetOrdersInfo(){
-        $orders = Cto::GetOrders();
-        $sellCount = 0;
-        $buyCount = 0;
-        $buyTotalAmount = 0;
-        $sellTotalAmount = 0;
-        $buyPriceSumm = 0;
-        $sellPriceSumm = 0;
-        $CTOInOrders = 0;
-        $BTCInOrders = 0;
-        if($orders) {
-            foreach ($orders as $orderID => $order) {
-                switch ($order['type']) {
-                    case 'sell':
-                        $sellCount++;
-                        $sellTotalAmount += $order['amount'];
-                        $sellPriceSumm += $order['price'];
-                        $CTOInOrders += $order['amount'];
-                        break;
-                    case 'buy':
-                        $buyCount++;
-                        $buyTotalAmount += $order['amount'];
-                        $buyPriceSumm += $order['price'];
-                        $BTCInOrders += $order['amount'] * $order['price'];
-                        break;
-                }
-            }
-            if ($buyCount > 0) {
-                $buyAvgPrice = $buyPriceSumm / $buyCount;
-            } else {
-                $buyAvgPrice = 0;
-            }
-            if ($sellCount > 0) {
-                $sellAvgPrice = $sellPriceSumm / $sellCount;
-            } else {
-                $sellAvgPrice = 0;
-            }
-            $sellAvgPriceF = number_format($sellAvgPrice, 8);
-            $buyAvgPriceF = number_format($buyAvgPrice, 8);
-            $R = "Sell count: $sellCount\r\n";
-            $R .= "Buy count: $buyCount\r\n";
-            $R .= "Buy average price: $buyAvgPriceF \r\n";
-            $R .= "Sell average price: $sellAvgPriceF \r\n";
-            $R .= "CTO in orders: $CTOInOrders \r\n";
-            $R .= "BTC in orders: $BTCInOrders \r\n";
-            // KV::set('cto_sell_count', $sellCount);
-            // KV::set('cto_buy_count', $sellCount);
-            // KV::set('cto_in_orders', $CTOInOrders);
-            // KV::set('btc_in_orders', $BTCInOrders);
-        }else{
-            $R = "Not successful request";
-        }
-        return $R;
-    }
-
-    static function GetOrders(){
-        $cto = new Cto();
-        $R = $cto->api->getOrders($cto->pair, true);
-        if ($R['return']){
-            return $R['return'];
-        }
-    }
-
-    static function CancelRandomOrder(){
-        $orders = Cto::GetOrders();
-        if($orders) {
-            $ordersIDs = array_keys($orders);
-            $cto = new Cto();
-            $cto->api->cancelOrder(VVMHelper::GetRandomArrayValue($ordersIDs));
-        }else{
-            echo 'Error in order response';
-        }
-    }
-
+    /**
+     * @deprecated
+     */
     static function CacheTicker(){
         $cto = new Cto();
         $lastUpdate = KV::get('cto_last_update');
@@ -139,6 +137,9 @@ class Cto extends AbstractPair
         }
     }
 
+    /**
+     * @deprecated
+     */
     static function UpdateCache(){
         echo "updating cache\r\n";
     }

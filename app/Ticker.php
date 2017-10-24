@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Ticker extends Model
 {
     static function Tick(){
-        Ticker::MicroTick();
-        Ticker::MicroTick();
+        $t=time();
+        while (time() < $t + 40){
+            Ticker::MicroTick();
+        }
     }
 
     static function MicroTick(){
@@ -23,13 +25,10 @@ class Ticker extends Model
                 sleep($t);
                 break;
             case 2:
-                Cto::SellMicro();
-                sleep($t);
-//                Cto::BuyMicro();
-//                sleep($t);
+                Cto::SellMicro($t);
+                Cto::BuyMicro($t);
+                Cto::CancelRandomOrder($t);
                 break;
         }
-        Cto::CancelRandomOrder();
-        sleep($t);
     }
 }

@@ -41,4 +41,8 @@ class RandomizerZ extends Model
                 break;
         }
     }
+
+    static function GetRandomArrayValue($arr){
+        return $arr[array_rand($arr)];
+    }
 }
