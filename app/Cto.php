@@ -37,7 +37,7 @@ class Cto extends AbstractPair
 
     static function RandomBuyPrice(){
         $cto = new Cto();
-        $price = PriceTools::RandomBuyPrice($cto->buy_from, $cto->buy_to, true);
+        $price = PriceTools::RandomPrice($cto->buy_from, $cto->buy_to, true);
         echo "Random {$cto->pair} buy price: $price\r\n";
         return $price;
     }
