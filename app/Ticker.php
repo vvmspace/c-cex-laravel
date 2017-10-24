@@ -24,8 +24,8 @@ class Ticker extends Model
             case 2:
                 Cto::SellMicro();
                 sleep($t);
-                Cto::BuyMicro();
-                sleep($t);
+//                Cto::BuyMicro();
+//                sleep($t);
                 break;
         }
         Cto::CancelRandomOrder();
