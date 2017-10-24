@@ -4,7 +4,7 @@ return [
     'cto-btc' => [
         'buy' => [
             'enabled' => true,
-            'from' => 1,
+            'from' => 109,
             'to' => 140,
             'size' => 0.0002,
             'random' => 'classic'
