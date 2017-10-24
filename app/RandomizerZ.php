@@ -28,4 +28,17 @@ class RandomizerZ extends Model
         return rand(rand($min, $max), $max);
     }
 
+    static function RandomFactory($min, $max, $type = 'classic'){
+        switch ($type){
+            case 'high':
+                return self::HighRandom($min, $max);
+                break;
+            case 'low':
+                return self::LowRandom($min, $max);
+                break;
+            default:
+                return rand($min, $max);
+                break;
+        }
+    }
 }
