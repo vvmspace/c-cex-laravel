@@ -37,7 +37,7 @@ class Cto extends AbstractPair
 
     static function RandomBuyPrice(){
         $cto = new Cto();
-        $price = PriceTools::RandomBuyPrice($cto->buy_from, $cto->buy_to, true);
+        $price = PriceTools::RandomPrice($cto->buy_from, $cto->buy_to, true);
         echo "Random {$cto->pair} buy price: $price\r\n";
         return $price;
     }
@@ -45,14 +45,14 @@ class Cto extends AbstractPair
     static function BuyMicro(){
 	   $cto = new Cto;
        $price = Cto::RandomBuyPrice();
-       $size = 0.0005;
+       $size = 0.0002;
        $cto->api->makeOrder('buy', 'cto-btc', $size/$price , $price);
     }
 
     static function SellMicro(){
        $cto = new Cto();
        $price = Cto::RandomSellPrice();
-       $size = 0.002;
+       $size = 0.0002;
        $cto->api->makeOrder('sell', 'cto-btc', $size / $price , $price);
     }
 
