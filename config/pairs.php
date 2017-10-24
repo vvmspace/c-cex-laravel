@@ -4,15 +4,15 @@ return [
     'cto-btc' => [
         'buy' => [
             'enabled' => true,
-            'from' => 80,
-            'to' => 140,
+            'from' => 50,
+            'to' => 100,
             'size' => 0.0002,
             'random' => 'classic'
         ],
         'sell' => [
             'enabled' => true,
-            'from' => 175,
-            'to' => 250,
+            'from' => 140,
+            'to' => 200,
             'size' => 0.0005,
             'random' => 'classic'
         ]
