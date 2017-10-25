@@ -18,6 +18,23 @@ return [
             'random' => 'classic'
         ]
     ],
+    'brit-btc' => [
+        'class' => 'Brit',
+        'buy' => [
+            'enabled' => true,
+            'from' => 165,
+            'to' => 385,
+            'size' => 0.00015,
+            'random' => 'classic'
+        ],
+        'sell' => [
+            'enabled' => true,
+            'from' => 400,
+            'to' => 450,
+            'size' => 0.00015,
+            'random' => 'classic'
+        ]
+    ],
     'dash-btc' => [
         'class' => 'Dash',
         'buy' => [
