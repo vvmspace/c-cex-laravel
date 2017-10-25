@@ -16,6 +16,7 @@ class AbstractPair extends Model
     public $pair;
     public $config;
     public $api;
+    static public $orders;
 
     function __construct(array $attributes = [])
     {
@@ -67,8 +68,13 @@ class AbstractPair extends Model
         }
     }
 
-    static function GetOrdersInfo(){
-        $orders = static::GetOrders();
+    static function GetOrdersInfo($delay = null){
+        if(empty(static::$orders)){
+            static::$orders = static::GetOrders();
+            if($delay){
+                sleep($delay);
+            }
+        }
         $sellCount = 0;
         $buyCount = 0;
         $buyTotalAmount = 0;
@@ -77,8 +83,8 @@ class AbstractPair extends Model
         $sellPriceSumm = 0;
         $CTOInOrders = 0;
         $BTCInOrders = 0;
-        if($orders) {
-            foreach ($orders as $orderID => $order) {
+        if(static::$orders) {
+            foreach (static::$orders as $orderID => $order) {
                 switch ($order['type']) {
                     case 'sell':
                         $sellCount++;
@@ -130,7 +136,14 @@ class AbstractPair extends Model
     }
 
     static function CancelRandomOrder($delay = null){
-        $orders = static::GetOrders();
+        /**
+         * @TODO: debug
+         */
+        if(empty(static::$orders)){
+            $orders = static::GetOrders($delay);
+        }else{
+            $orders = static::$orders;
+        }
         if($orders) {
             $ordersIDs = array_keys($orders);
             $pair = new static();
@@ -140,6 +153,7 @@ class AbstractPair extends Model
             }
         }else{
             echo 'Error in order response';
+            static::GetOrders($delay);
         }
     }
 
