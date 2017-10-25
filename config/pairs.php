@@ -5,7 +5,7 @@ return [
         'buy' => [
             'enabled' => true,
             'from' => 10,
-            'to' => 140,
+            'to' => 100,
             'size' => 0.0002,
             'random' => 'classic'
         ],
