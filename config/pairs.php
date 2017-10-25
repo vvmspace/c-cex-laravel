@@ -2,6 +2,7 @@
 
 return [
     'cto-btc' => [
+        'class' => 'Cto',
         'buy' => [
             'enabled' => true,
             'from' => 10,
@@ -18,17 +19,18 @@ return [
         ]
     ],
     'dash-btc' => [
+        'class' => 'Dash',
         'buy' => [
-            'enabled' => false,
-            'from' => 0.04 * 100000000,
-            'to' => 0.047 * 100000000,
+            'enabled' => true,
+            'from' => 0.045 * 100000000,
+            'to' => 0.05 * 100000000,
             'size' => 0.0005,
             'random' => 'low'
         ],
         'sell' => [
-            'enabled' => false,
-            'from' => 0.052 * 100000000,
-            'to' => 0.07 * 100000000,
+            'enabled' => true,
+            'from' => 0.051 * 100000000,
+            'to' => 0.055 * 100000000,
             'size' => 0.0005,
             'random' => 'high'
         ]
