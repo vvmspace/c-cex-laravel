@@ -7,14 +7,14 @@ return [
             'enabled' => true,
             'from' => 10,
             'to' => 150,
-            'size' => 0.0002,
+            'size' => 0.00015,
             'random' => 'classic'
         ],
         'sell' => [
             'enabled' => true,
             'from' => 165,
             'to' => 200,
-            'size' => 0.0005,
+            'size' => 0.00015,
             'random' => 'classic'
         ]
     ],
@@ -22,17 +22,17 @@ return [
         'class' => 'Dash',
         'buy' => [
             'enabled' => true,
-            'from' => 0.045 * 100000000,
-            'to' => 0.05 * 100000000,
-            'size' => 0.0005,
-            'random' => 'low'
+            'from' => 0.048 * 100000000,
+            'to' => 0.0502 * 100000000,
+            'size' => 0.0003,
+            'random' => 'classic'
         ],
         'sell' => [
             'enabled' => true,
-            'from' => 0.051 * 100000000,
+            'from' => 0.0508 * 100000000,
             'to' => 0.055 * 100000000,
-            'size' => 0.0005,
-            'random' => 'high'
+            'size' => 0.0003,
+            'random' => 'classic'
         ]
     ]
 ];
