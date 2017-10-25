@@ -6,14 +6,14 @@ return [
         'buy' => [
             'enabled' => true,
             'from' => 10,
-            'to' => 150,
+            'to' => 144,
             'size' => 0.00015,
             'random' => 'classic'
         ],
         'sell' => [
             'enabled' => true,
-            'from' => 150,
-            'to' => 170,
+            'from' => 148,
+            'to' => 160,
             'size' => 0.00015,
             'random' => 'classic'
         ]
