@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Mockery\Exception;
 
 class Api extends Model
 {
@@ -24,8 +25,12 @@ class Api extends Model
         );
 
         $context  = stream_context_create($opts);
-        $feed = file_get_contents($url, false, $context);
-
+        try{
+            $feed = file_get_contents($url, false, $context);
+        }catch (Exception $e){
+            echo $e->getMessage();
+            return array('error' => $e->getMessage());
+        }
         if($feed == 'Empty error'){
             return array('error' => 'Invalid parametres');
         }else{

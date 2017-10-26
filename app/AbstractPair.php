@@ -145,9 +145,18 @@ class AbstractPair extends Model
             $orders = static::$orders;
         }
         if($orders) {
-            $ordersIDs = array_keys($orders);
             $pair = new static();
-            $pair->api->cancelOrder(RandomizerZ::GetRandomArrayValue($ordersIDs));
+            $cnt = count($orders);
+            echo "$cnt orders on pair {$pair->pair} \r\n";
+            $ordersIDs = array_keys($orders);
+            $orderID = RandomizerZ::GetRandomArrayValue($ordersIDs);
+            $response = $pair->api->cancelOrder($orderID);
+            if($response['return']){
+                unset($orders[$orderID]);
+                echo "Order $orderID has been cancelled.\r\n";
+            }else{
+                echo "No return\r\n";
+            }
             if($delay){
                 sleep($delay);
             }
