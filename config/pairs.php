@@ -42,7 +42,7 @@ return [
             'from' => 0.046 * 100000000,
             'to' => 0.0475 * 100000000,
             'size' => 0.0003,
-            'random' => 'classic'
+            'random' => 'low'
         ],
         'sell' => [
             'enabled' => true,
