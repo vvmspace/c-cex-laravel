@@ -65,7 +65,7 @@ class AbstractPair extends Model
 
     static function BuyMicro($delay = null){
         $pair = new static();
-        if(static::TradeAllowed('sell')){
+        if(static::TradeAllowed('buy')){
             $price = static::RandomBuyPrice();
             $size = $pair->config['buy']['size'];
             $pair->api->makeOrder('buy', $pair->pair, $size/$price , $price);
