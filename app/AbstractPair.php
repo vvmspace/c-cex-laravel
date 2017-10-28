@@ -44,9 +44,22 @@ class AbstractPair extends Model
         return $price;
     }
 
+    static function TradeAllowed($type){
+    	$pair = new static();
+    	$enabled = $pair->config[$type]['enabled'];
+    	$limited = (!empty($pair->config[$type]['till']));
+    	if(!$limited){
+    		$oktime = true;
+    	}else{
+    		$oktime = $pair->config[$type]['till'] < time();
+    	}
+    	$TradeAllowed = ($enabled && !$limited) || ($enabled && $limited && $oktime);
+        return $TradeAllowed;
+    }
+
     static function BuyMicro($delay = null){
         $pair = new static();
-        if($pair->config['buy']['enabled']){
+        if(static::TradeAllowed('sell')){
             $price = static::RandomBuyPrice();
             $size = $pair->config['buy']['size'];
             $pair->api->makeOrder('buy', $pair->pair, $size/$price , $price);
@@ -58,7 +71,7 @@ class AbstractPair extends Model
 
     static function SellMicro($delay = null){
         $pair = new static();
-        if($pair->config['sell']['enabled']) {
+        if(static::TradeAllowed('sell')) {
             $price = static::RandomSellPrice();
             $size = $pair->config['sell']['size'];
             $pair->api->makeOrder('sell', $pair->pair, $size / $price, $price);
