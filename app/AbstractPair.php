@@ -46,15 +46,21 @@ class AbstractPair extends Model
 
     static function TradeAllowed($type){
     	$pair = new static();
+    	echo "Pair: {$pair->pair} \r\n";
+    	echo "Type: $type \r\n";
     	$enabled = $pair->config[$type]['enabled'];
+    	echo "Enabled: " . strval($enabled) . "\r\n";
     	$limited = (!empty($pair->config[$type]['till']));
+    	echo "Limited: " . strval($limited) . "\r\n";
     	if(!$limited){
     		$oktime = true;
     	}else{
-    		$oktime = $pair->config[$type]['till'] < time();
+    		$oktime = $pair->config[$type]['till'] > time();
+    		echo "Time is ok: " . strval($oktime) . "\r\n";
     	}
     	$TradeAllowed = ($enabled && !$limited) || ($enabled && $limited && $oktime);
-        return $TradeAllowed;
+        echo "Trade is allowed: " . strval($TradeAllowed) . "\r\n";
+    	return $TradeAllowed;
     }
 
     static function BuyMicro($delay = null){
