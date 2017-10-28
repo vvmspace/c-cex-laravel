@@ -22,9 +22,9 @@ return [
     'brit-btc' => [
         'class' => 'Brit',
         'buy' => [
-            'enabled' => false,
-            'from' => 200,
-            'to' => 400,
+            'enabled' => true,
+            'from' => 300,
+            'to' => 350,
             'size' => 0.00015,
             'random' => 'classic'
         ],
