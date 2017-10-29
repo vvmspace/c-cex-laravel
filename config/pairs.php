@@ -23,9 +23,9 @@ return [
         'class' => 'Brit',
         'buy' => [
             'enabled' => true,
-            'from' => 300,
+            'from' => 285,
             'to' => 349,
-            'size' => 0.00015,
+            'size' => 0.0005,
             'random' => 'low'
         ],
         'sell' => [
