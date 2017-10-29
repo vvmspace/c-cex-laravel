@@ -24,14 +24,14 @@ return [
         'buy' => [
             'enabled' => true,
             'from' => 285,
-            'to' => 349,
+            'to' => 344,
             'size' => 0.0005,
             'random' => 'low'
         ],
         'sell' => [
             'enabled' => true,
-            'from' => 350,
-            'to' => 360,
+            'from' => 345,
+            'to' => 350,
             'size' => 0.001,
             'random' => 'high'
         ]
