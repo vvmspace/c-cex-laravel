@@ -33,8 +33,7 @@ return [
             'from' => 375,
             'to' => 400,
             'size' => 0.00015,
-            'random' => 'high',
-            'till' => 1509197535
+            'random' => 'high'
         ]
     ],
     'dash-btc' => [
