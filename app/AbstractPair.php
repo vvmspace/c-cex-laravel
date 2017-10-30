@@ -44,9 +44,28 @@ class AbstractPair extends Model
         return $price;
     }
 
+    static function TradeAllowed($type){
+    	$pair = new static();
+    	echo "Pair: {$pair->pair} \r\n";
+    	echo "Type: $type \r\n";
+    	$enabled = $pair->config[$type]['enabled'];
+    	echo "Enabled: " . strval($enabled) . "\r\n";
+    	$limited = (!empty($pair->config[$type]['till']));
+    	echo "Limited: " . strval($limited) . "\r\n";
+    	if(!$limited){
+    		$oktime = true;
+    	}else{
+    		$oktime = $pair->config[$type]['till'] > time();
+    		echo "Time is ok: " . strval($oktime) . "\r\n";
+    	}
+    	$TradeAllowed = ($enabled && !$limited) || ($enabled && $limited && $oktime);
+        echo "Trade is allowed: " . strval($TradeAllowed) . "\r\n";
+    	return $TradeAllowed;
+    }
+
     static function BuyMicro($delay = null){
         $pair = new static();
-        if($pair->config['buy']['enabled']){
+        if(static::TradeAllowed('buy')){
             $price = static::RandomBuyPrice();
             $size = $pair->config['buy']['size'];
             $pair->api->makeOrder('buy', $pair->pair, $size/$price , $price);
@@ -58,7 +77,7 @@ class AbstractPair extends Model
 
     static function SellMicro($delay = null){
         $pair = new static();
-        if($pair->config['sell']['enabled']) {
+        if(static::TradeAllowed('sell')) {
             $price = static::RandomSellPrice();
             $size = $pair->config['sell']['size'];
             $pair->api->makeOrder('sell', $pair->pair, $size / $price, $price);

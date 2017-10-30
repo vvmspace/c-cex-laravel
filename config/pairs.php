@@ -4,16 +4,17 @@ return [
     'cto-btc' => [
         'class' => 'Cto',
         'buy' => [
-            'enabled' => false,
-            'from' => 10,
-            'to' => 120,
+            'enabled' => true,
+            'from' => 35,
+            'to' => 55,
             'size' => 0.00015,
-            'random' => 'classic'
+            'random' => 'classic',
+            'till' => 1509494400
         ],
         'sell' => [
             'enabled' => true,
-            'from' => 145,
-            'to' => 148,
+            'from' => 55,
+            'to' => 60,
             'size' => 0.00015,
             'random' => 'classic'
         ]
@@ -22,17 +23,17 @@ return [
         'class' => 'Brit',
         'buy' => [
             'enabled' => true,
-            'from' => 200,
-            'to' => 400,
+            'from' => 285,
+            'to' => 344,
             'size' => 0.00015,
-            'random' => 'classic'
+            'random' => 'low'
         ],
         'sell' => [
             'enabled' => true,
-            'from' => 400,
-            'to' => 450,
-            'size' => 0.00015,
-            'random' => 'classic'
+            'from' => 345,
+            'to' => 350,
+            'size' => 0.001,
+            'random' => 'high'
         ]
     ],
     'dash-btc' => [
