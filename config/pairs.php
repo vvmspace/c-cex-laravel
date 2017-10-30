@@ -5,7 +5,7 @@ return [
         'class' => 'Cto',
         'buy' => [
             'enabled' => true,
-            'from' => 35,
+            'from' => 50,
             'to' => 70,
             'size' => 0.00015,
             'random' => 'classic',
