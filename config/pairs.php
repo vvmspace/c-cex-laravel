@@ -15,7 +15,7 @@ return [
             'enabled' => true,
             'from' => 75,
             'to' => 90,
-            'size' => 0.00015,
+            'size' => 0.001,
             'random' => 'classic'
         ]
     ],
@@ -25,7 +25,7 @@ return [
             'enabled' => true,
             'from' => 200,
             'to' => 302,
-            'size' => 0.00015,
+            'size' => 0.0001,
             'random' => 'classic'
         ],
         'sell' => [
@@ -33,7 +33,7 @@ return [
             'from' => 335,
             'to' => 345,
             'size' => 0.001,
-            'random' => 'high'
+            'random' => 'classic'
         ]
     ],
     'dash-btc' => [
@@ -42,14 +42,14 @@ return [
             'enabled' => true,
             'from' => 0.044 * 100000000,
             'to' => 0.04575 * 100000000,
-            'size' => 0.0003,
+            'size' => 0.0001,
             'random' => 'low'
         ],
         'sell' => [
             'enabled' => true,
             'from' => 0.0465 * 100000000,
-            'to' => 0.0487 * 100000000,
-            'size' => 0.0003,
+            'to' => 0.047 * 100000000,
+            'size' => 0.001,
             'random' => 'classic'
         ]
     ]
