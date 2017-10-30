@@ -23,8 +23,8 @@ return [
         'class' => 'Brit',
         'buy' => [
             'enabled' => true,
-            'from' => 150,
-            'to' => 220,
+            'from' => 200,
+            'to' => 275,
             'size' => 0.00015,
             'random' => 'low'
         ],
