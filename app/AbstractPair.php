@@ -180,7 +180,7 @@ class AbstractPair extends Model
                 sleep($delay);
             }
         }else{
-            echo 'Error in order response';
+            echo "Error in order response\r\n";
             static::GetOrders($delay);
         }
     }
