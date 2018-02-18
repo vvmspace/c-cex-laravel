@@ -7,14 +7,14 @@ return [
             'enabled' => true,
             'from' => 50,
             'to' => 149,
-            'size' => 0.0001,
+            'size' => 0.00011,
             'random' => 'classic'
         ],
         'sell' => [
             'enabled' => true,
             'from' => 155,
             'to' => 200,
-            'size' => 0.0001,
+            'size' => 0.00011,
             'random' => 'classic'
         ]
     ],
