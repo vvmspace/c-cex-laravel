@@ -6,13 +6,13 @@ return [
         'buy' => [
             'enabled' => true,
             'from' => 50,
-            'to' => 169,
+            'to' => 149,
             'size' => 0.0001,
             'random' => 'classic'
         ],
         'sell' => [
             'enabled' => true,
-            'from' => 170,
+            'from' => 155,
             'to' => 500,
             'size' => 0.0001,
             'random' => 'classic'
