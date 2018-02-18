@@ -15,7 +15,7 @@ class Ticker extends Model
 
     static function MicroTick(){
         $t = 8;
-        $r = 3;
+        $r = 2;
         switch ($r) {
             case 1:
                 Dash::SellMicro($t);
