@@ -80,7 +80,8 @@ class AbstractPair extends Model
         if(static::TradeAllowed('sell')) {
             $price = static::RandomSellPrice();
             $size = $pair->config['sell']['size'];
-            $pair->api->makeOrder('sell', $pair->pair, $size / $price, $price);
+            $q = $size / $price;
+            $pair->api->makeOrder('sell', $pair->pair, $q, $price);
             if($delay){
                 sleep($delay);
             }
