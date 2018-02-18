@@ -6,30 +6,29 @@ return [
         'buy' => [
             'enabled' => true,
             'from' => 50,
-            'to' => 70,
-            'size' => 0.00015,
-            'random' => 'classic',
-            'till' => 1509494400
+            'to' => 169,
+            'size' => 0.0001,
+            'random' => 'classic'
         ],
         'sell' => [
             'enabled' => true,
-            'from' => 75,
-            'to' => 90,
-            'size' => 0.001,
+            'from' => 170,
+            'to' => 500,
+            'size' => 0.0001,
             'random' => 'classic'
         ]
     ],
     'brit-btc' => [
         'class' => 'Brit',
         'buy' => [
-            'enabled' => true,
+            'enabled' => false,
             'from' => 180,
             'to' => 220,
             'size' => 0.0005,
             'random' => 'classic'
         ],
         'sell' => [
-            'enabled' => true,
+            'enabled' => false,
             'from' => 280,
             'to' => 345,
             'size' => 0.001,
@@ -39,14 +38,14 @@ return [
     'dash-btc' => [
         'class' => 'Dash',
         'buy' => [
-            'enabled' => true,
+            'enabled' => false,
             'from' => 0.0300 * 100000000,
             'to' => 0.0360 * 100000000,
             'size' => 0.0001,
             'random' => 'low'
         ],
         'sell' => [
-            'enabled' => true,
+            'enabled' => false,
             'from' => 0.0385 * 100000000,
             'to' => 0.047 * 100000000,
             'size' => 0.0003,
