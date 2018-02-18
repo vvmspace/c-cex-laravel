@@ -82,7 +82,8 @@ class AbstractPair extends Model
             $size = $pair->config['sell']['size'];
             $q = $size / $price;
             echo "$q\r\n";
-            $pair->api->makeOrder('sell', $pair->pair, $q, $price);
+            $r = $pair->api->makeOrder('sell', $pair->pair, $q, $price);
+            var_dump($r);
             if($delay){
                 sleep($delay);
             }
