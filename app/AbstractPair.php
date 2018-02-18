@@ -81,6 +81,7 @@ class AbstractPair extends Model
             $price = static::RandomSellPrice();
             $size = $pair->config['sell']['size'];
             $q = $size / $price;
+            echo "$q\r\n";
             $pair->api->makeOrder('sell', $pair->pair, $q, $price);
             if($delay){
                 sleep($delay);
