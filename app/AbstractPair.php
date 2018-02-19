@@ -154,6 +154,8 @@ class AbstractPair extends Model
         $R = $pair->api->getOrders($pair->pair, true);
         if ($R['return']){
             return $R['return'];
+        }else{
+            var_dump($R);
         }
     }
 
@@ -183,6 +185,7 @@ class AbstractPair extends Model
                 sleep($delay);
             }
         }else{
+            var_dump($orders);
             echo "Error in order response\r\n";
             static::GetOrders($delay);
         }
