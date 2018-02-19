@@ -5,15 +5,15 @@ return [
         'class' => 'Cto',
         'buy' => [
             'enabled' => true,
-            'from' => 50,
-            'to' => 149,
+            'from' => 82,
+            'to' => 170,
             'size' => 0.00011,
             'random' => 'classic'
         ],
         'sell' => [
             'enabled' => true,
-            'from' => 155,
-            'to' => 200,
+            'from' => 171,
+            'to' => 350,
             'size' => 0.00011,
             'random' => 'classic'
         ]
