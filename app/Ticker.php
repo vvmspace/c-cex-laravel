@@ -8,7 +8,7 @@ class Ticker extends Model
 {
     static function Tick(){
         $t=time();
-        while (time() < $t + 280){
+        while (time() < $t + 220){
             Ticker::MicroTick();
         }
     }
