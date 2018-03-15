@@ -30,7 +30,7 @@ return [
         'sell' => [
             'enabled' => true,
             'from' => 11,
-            'to' => 13,
+            'to' => 12,
             'size' => 0.00011,
             'random' => 'classic'
         ]
