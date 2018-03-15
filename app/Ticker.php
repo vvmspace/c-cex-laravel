@@ -14,7 +14,7 @@ class Ticker extends Model
     }
 
     static function MicroTick(){
-        $t = 15;
+        $t = 8;
         $r = 3;
         switch ($r) {
             case 1:
