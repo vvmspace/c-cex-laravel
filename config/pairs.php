@@ -22,14 +22,14 @@ return [
         'class' => 'Pai',
         'buy' => [
             'enabled' => true,
-            'from' => 8,
-            'to' => 12,
+            'from' => 5,
+            'to' => 10,
             'size' => 0.00011,
             'random' => 'classic'
         ],
         'sell' => [
             'enabled' => true,
-            'from' => 13,
+            'from' => 11,
             'to' => 15,
             'size' => 0.00011,
             'random' => 'classic'
