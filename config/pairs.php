@@ -4,14 +4,14 @@ return [
     'cto-btc' => [
         'class' => 'Cto',
         'buy' => [
-            'enabled' => true,
+            'enabled' => false,
             'from' => 70,
             'to' => 77,
             'size' => 0.00011,
             'random' => 'classic'
         ],
         'sell' => [
-            'enabled' => true,
+            'enabled' => false,
             'from' => 95,
             'to' => 100,
             'size' => 0.00011,
@@ -22,7 +22,7 @@ return [
         'class' => 'Pai',
         'buy' => [
             'enabled' => true,
-            'from' => 20,
+            'from' => 52,
             'to' => 62,
             'size' => 0.00011,
             'random' => 'classic'
