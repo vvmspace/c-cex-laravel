@@ -15,7 +15,7 @@ class Ticker extends Model
 
     static function MicroTick(){
         $t = 15;
-        $r = 2;
+        $r = rand(2,3);
         switch ($r) {
             case 1:
                 Dash::SellMicro($t);
@@ -28,9 +28,9 @@ class Ticker extends Model
                 Cto::CancelRandomOrder($t);
                 break;
             case 3:
-                Brit::SellMicro($t);
-                Brit::BuyMicro($t);
-                Brit::CancelRandomOrder($t);
+                Pai::SellMicro($t);
+                Pai::BuyMicro($t);
+                Pai::CancelRandomOrder($t);
                 break;
         }
     }

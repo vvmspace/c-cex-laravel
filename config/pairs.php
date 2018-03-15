@@ -18,6 +18,23 @@ return [
             'random' => 'classic'
         ]
     ],
+    'pai-btc' => [
+        'class' => 'Pai',
+        'buy' => [
+            'enabled' => true,
+            'from' => 20,
+            'to' => 55,
+            'size' => 0.00011,
+            'random' => 'classic'
+        ],
+        'sell' => [
+            'enabled' => true,
+            'from' => 57,
+            'to' => 200,
+            'size' => 0.00011,
+            'random' => 'classic'
+        ]
+    ],
     'brit-btc' => [
         'class' => 'Brit',
         'buy' => [
