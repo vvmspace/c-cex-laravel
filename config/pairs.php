@@ -22,8 +22,8 @@ return [
         'class' => 'Pai',
         'buy' => [
             'enabled' => true,
-            'from' => 30,
-            'to' => 57,
+            'from' => 15,
+            'to' => 36,
             'size' => 0.00011,
             'random' => 'classic'
         ],
