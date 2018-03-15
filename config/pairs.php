@@ -22,7 +22,7 @@ return [
         'class' => 'Pai',
         'buy' => [
             'enabled' => true,
-            'from' => 52,
+            'from' => 30,
             'to' => 62,
             'size' => 0.00011,
             'random' => 'classic'
