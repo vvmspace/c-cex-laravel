@@ -4,7 +4,7 @@ namespace App;
 
 class Pai extends AbstractPair
 {
-    public $pair = 'cto-btc';
+    public $pair = 'pai-btc';
 
     /**
      * @deprecated
