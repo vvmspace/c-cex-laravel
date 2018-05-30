@@ -5,15 +5,15 @@ return [
         'class' => 'Cto',
         'buy' => [
             'enabled' => false,
-            'from' => 70,
-            'to' => 77,
+            'from' => 1,
+            'to' => 70,
             'size' => 0.00011,
             'random' => 'classic'
         ],
         'sell' => [
             'enabled' => false,
             'from' => 95,
-            'to' => 100,
+            'to' => 300,
             'size' => 0.00011,
             'random' => 'classic'
         ]
@@ -21,16 +21,16 @@ return [
     'pai-btc' => [
         'class' => 'Pai',
         'buy' => [
-            'enabled' => true,
-            'from' => 2,
-            'to' => 8,
+            'enabled' => false,
+            'from' => 1,
+            'to' => 2,
             'size' => 0.000102,
             'random' => 'classic'
         ],
         'sell' => [
             'enabled' => true,
-            'from' => 9,
-            'to' => 12,
+            'from' => 3,
+            'to' => 5,
             'size' => 0.00011,
             'random' => 'classic'
         ]
