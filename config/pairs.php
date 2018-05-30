@@ -5,14 +5,14 @@ return [
         'class' => 'Cto',
         'buy' => [
             'enabled' => false,
-            'from' => 1,
-            'to' => 70,
+            'from' => 50,
+            'to' => 75,
             'size' => 0.00011,
             'random' => 'classic'
         ],
         'sell' => [
             'enabled' => false,
-            'from' => 95,
+            'from' => 76,
             'to' => 300,
             'size' => 0.00011,
             'random' => 'classic'
@@ -55,16 +55,16 @@ return [
     'dash-btc' => [
         'class' => 'Dash',
         'buy' => [
-            'enabled' => false,
-            'from' => 0.0300 * 100000000,
-            'to' => 0.0360 * 100000000,
+            'enabled' => true,
+            'from' => 0.038 * 100000000,
+            'to' => 0.041 * 100000000,
             'size' => 0.0001,
             'random' => 'low'
         ],
         'sell' => [
-            'enabled' => false,
-            'from' => 0.0385 * 100000000,
-            'to' => 0.047 * 100000000,
+            'enabled' => true,
+            'from' => 0.0415 * 100000000,
+            'to' => 0.045 * 100000000,
             'size' => 0.0003,
             'random' => 'classic'
         ]
