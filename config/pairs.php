@@ -5,15 +5,15 @@ return [
         'class' => 'Cto',
         'buy' => [
             'enabled' => true,
-            'from' => 50,
-            'to' => 80,
-            'size' => 0.00011,
+            'from' => 60,
+            'to' => 75,
+            'size' => 0.00035,
             'random' => 'classic'
         ],
         'sell' => [
             'enabled' => true,
             'from' => 88,
-            'to' => 150,
+            'to' => 92,
             'size' => 0.00011,
             'random' => 'classic'
         ]
@@ -56,16 +56,16 @@ return [
         'class' => 'Dash',
         'buy' => [
             'enabled' =>  false,
-            'from' => 0.035 * 100000000,
-            'to' => 0.037 * 100000000,
+            'from' => 0.041 * 100000000,
+            'to' => 0.042 * 100000000,
             'size' => 0.0001,
             'random' => 'low'
         ],
         'sell' => [
             'enabled' => true,
-            'from' => 0.04109 * 100000000,
-            'to' => 0.045 * 100000000,
-            'size' => 0.000101,
+            'from' => 0.04309 * 100000000,
+            'to' => 0.044 * 100000000,
+            'size' => 0.00011,
             'random' => 'classic'
         ]
     ]
