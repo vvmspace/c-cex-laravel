@@ -40,7 +40,7 @@ class AbstractPair extends Model
     }
 
     function sinCor(){
-        $d = 60 * 60;
+        $d = 60 * 10;
         $a = time() / $d;
         $m = (int)((sin($a)+1) * ($this->sin_volatility/2));
         return $m;
