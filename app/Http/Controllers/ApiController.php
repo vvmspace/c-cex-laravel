@@ -9,6 +9,10 @@ class ApiController extends Controller
 {
     function sinCto(){
         $cto = new Cto();
-        return ['to' => $cto->to()];
+        return [
+            'buy' => [
+                'to' => $cto->buyTo()
+            ]
+        ];
     }
 }
