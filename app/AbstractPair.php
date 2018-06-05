@@ -38,8 +38,11 @@ class AbstractPair extends Model
     }
 
     static function RandomBuyPrice(){
+	$d = 60 * 60;
+	$a = time() / $d;
+	$m = (int)((sin($a)+1)*7);
         $pair = new static();
-        $price = PriceTools::SatoshiToBTC(RandomizerZ::RandomFactory($pair->config['buy']['from'], $pair->config['buy']['to'], $pair->config['buy']['random']),true);
+        $price = PriceTools::SatoshiToBTC(RandomizerZ::RandomFactory($pair->config['buy']['from'], $pair->config['buy']['to'] - $m, $pair->config['buy']['random']),true);
         echo "Random {$pair->pair} buy price: $price\r\n";
         return $price;
     }

@@ -37,7 +37,9 @@ class sin extends Command
      */
     public function handle()
     {
-        $angle = time() - 1528127692;
-        echo (int)((sin($angle / 60) + 1) * 10);
+	$d = 60*60;
+        $t = time() - 1528127692;
+        $angle = $t / $d;
+	echo (int)((sin($angle) + 1) * 10);
     }
 }
