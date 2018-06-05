@@ -16,6 +16,7 @@ class AbstractPair extends Model
     public $pair;
     public $config;
     public $api;
+    public $sin_volatility = 20;
     static public $orders;
 
     function __construct(array $attributes = [])
@@ -30,17 +31,32 @@ class AbstractPair extends Model
         $this->api = new Api();
     }
 
+    function from(){
+        return $this->config['sell']['to'];
+    }
+
+    function to(){
+        return $this->config['sell']['to'] - $this->sinCor();
+    }
+
+    function sinCor(){
+        $d = 60 * 60;
+        $a = time() / $d;
+        $m = (int)((sin($a)+1) * $this->sin_volatility);
+        return $m;
+    }
+
     static function RandomSellPrice(){
         $pair = new static();
-        $price = PriceTools::SatoshiToBTC(RandomizerZ::RandomFactory($pair->config['sell']['from'], $pair->config['sell']['to'], $pair->config['sell']['random']),true);
+        $price = PriceTools::SatoshiToBTC(RandomizerZ::RandomFactory($pair->from(), $pair->to(), $pair->config['sell']['random']),true);
         echo "Random {$pair->pair} sell price: $price\r\n";
         return $price;
     }
 
     static function RandomBuyPrice(){
-	$d = 60 * 60;
-	$a = time() / $d;
-	$m = (int)((sin($a)+1)*7);
+        $d = 60 * 60;
+        $a = time() / $d;
+        $m = (int)((sin($a)+1)*7);
         $pair = new static();
         $price = PriceTools::SatoshiToBTC(RandomizerZ::RandomFactory($pair->config['buy']['from'], $pair->config['buy']['to'] - $m, $pair->config['buy']['random']),true);
         echo "Random {$pair->pair} buy price: $price\r\n";
