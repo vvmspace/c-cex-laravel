@@ -16,7 +16,7 @@ class AbstractPair extends Model
     public $pair;
     public $config;
     public $api;
-    public $sin_volatility = 20;
+    public $sin_volatility = 0;
     static public $orders;
 
     function __construct(array $attributes = [])
