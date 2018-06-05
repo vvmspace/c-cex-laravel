@@ -32,7 +32,7 @@ class AbstractPair extends Model
     }
 
     function buyFrom(){
-        return $this->config['buy']['from'];
+        return $this->config['buy']['from'] - $this->sinCor();
     }
 
     function buyTo(){
