@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/works', function (Request $request){
     return 'works';
 });
+
+Route::get('/sin/cto-btc', 'ApiController@sinCto');
