@@ -40,7 +40,7 @@ class AbstractPair extends Model
     }
 
     function sinCor(){
-        $d = 60 * 30;
+        $d = 60 * 60;
         $a = time() / $d;
         $m = (int)((sin($a)+1) * ($this->sin_volatility/2));
         return $m;
@@ -99,7 +99,6 @@ class AbstractPair extends Model
             $q = $size / $price;
             // echo "$q\r\n";
             $r = $pair->api->makeOrder('sell', $pair->pair, $q, $price);
-            // var_dump($r);
             if($delay){
                 sleep($delay);
             }
