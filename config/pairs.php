@@ -7,7 +7,7 @@ return [
             'enabled' => true,
             'from' => 65,
             'to' => 85,
-            'size' => 0.001,
+            'size' => 0.0003,
             'random' => 'classic'
         ],
         'sell' => [
