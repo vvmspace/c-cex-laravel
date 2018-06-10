@@ -6,6 +6,7 @@ class Cto extends AbstractPair
 {
     public $pair = 'cto-btc';
     public $sin_volatility = 20;
+    public $sin_delay = 60 * 30;
 
     /**
      * @deprecated
