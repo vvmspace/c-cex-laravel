@@ -17,6 +17,7 @@ class AbstractPair extends Model
     public $config;
     public $api;
     public $sin_volatility = 0;
+    public $sin_delay = 60 * 10;
     static public $orders;
 
     function __construct(array $attributes = [])
@@ -40,7 +41,7 @@ class AbstractPair extends Model
     }
 
     function sinCor(){
-        $d = 60 * 10;
+        $d = $this->sin_delay;
         $a = time() / $d;
         $m = (int)((sin($a)+1) * ($this->sin_volatility/2));
         return $m;
