@@ -5,7 +5,7 @@ namespace App;
 class Cto extends AbstractPair
 {
     public $pair = 'cto-btc';
-    public $sin_volatility = 20;
+    public $sin_volatility = 10;
     public $sin_delay = 60 * 60 * 2;
 
     /**
